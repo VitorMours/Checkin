@@ -3,7 +3,7 @@ from rest_framework.views import APIView
 from rest_framework import status
 from rest_framework.response import Response
 from django.contrib.auth.models import User, Group 
-from api.serializers import UserSerializer
+from backend.api.infra.web.serializers import UserSerializer
 
 class UserView(APIView):
     """
@@ -28,3 +28,14 @@ class UserView(APIView):
             return Response(serialized_data.data, status=status.HTTP_201_CREATED)
         else:
             return Response(serialized_data.errors, status=status.HTTP_400_BAD_REQUEST)
+        
+    
+    def put(self, request) -> None:
+
+        pass 
+
+
+    def delete(self, request):
+        pass
+
+    

@@ -1,6 +1,6 @@
 from django.shortcuts import render 
 from django.urls import path
-from api import views
+from backend.api.infra.web import views
 from rest_framework import routers
 from rest_framework.urlpatterns import format_suffix_patterns
 

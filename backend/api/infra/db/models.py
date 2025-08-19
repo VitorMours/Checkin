@@ -7,7 +7,6 @@ class Administrator(User):
 class Administrated(User):
     pass
 
-
 class Sector(models.Model):
     name = models.CharField(max_length=50)
 
