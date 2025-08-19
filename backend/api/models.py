@@ -1,18 +1,14 @@
 from django.db import models
+from django.contrib.auth.models import User, Group
 
-# Create your models here.
-
-class User(models.Model):
+class Administrator(User):
     pass
 
-class Student(models.Model):
+class Administrated(User):
     pass
 
-class Class(models.Model):
-    pass
 
-class Subject(models.Model):
-    pass
+class Sector(models.Model):
+    name = models.CharField(max_length=50)
 
-class Teacher(models.Model):
-    pass
+
