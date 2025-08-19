@@ -17,6 +17,10 @@ media
 .idea/**/dictionaries
 .idea/**/shelf
 
+**/migrations
+**/migrations/
+**migrations/
+
 # AWS User-specific
 .idea/**/aws.xml
 
