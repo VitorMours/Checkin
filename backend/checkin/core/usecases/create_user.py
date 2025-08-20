@@ -1,5 +1,5 @@
-from backend.api.core.entities.user import User 
-from backend.api.core.interfaces.user_repository import UserRepositoryInterface
+from checkin.core.entities.user import User 
+from checkin.core.interfaces.user_repository import UserRepositoryInterface
 
 
 class CreateUser:
