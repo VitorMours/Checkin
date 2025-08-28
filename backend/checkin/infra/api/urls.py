@@ -5,5 +5,5 @@ from checkin.infra.api import views
 
 
 urlpatterns = [
-    path("users/", views.UserView.as_view())
+    path("users/", views.UserView.as_view(), name="users-list")
 ]

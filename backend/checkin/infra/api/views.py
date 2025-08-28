@@ -9,7 +9,7 @@ from .serializers import UserSerializer
 
 class UserView(APIView):
     """
-    View for the user object inside of the api
+    User view to manipulate the users data
     """
     def get(self, request) -> None:
         """
@@ -24,6 +24,7 @@ class UserView(APIView):
         """
         Create a new element inside of the group
         """
+        print(request)
         repository = UserRepository()
         use_case = CreateUser(repository=repository)
 
@@ -39,4 +40,9 @@ class UserView(APIView):
         )
         serialized_user = UserSerializer(user)
         return Response(serialized_user.data, status=status.HTTP_201_CREATED)
-        
+    
+    def put(self, request, pk) -> None: 
+        """
+        Update the element of the user based on the pk
+        """
+        # TODO: Create the service to update the user based on the pk search 

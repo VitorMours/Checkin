@@ -1,11 +1,13 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
+from typing import Optional
 import uuid
 
 
 @dataclass 
 class User:
-    id : uuid.uuid4 
     first_name : str 
     last_name : str 
     email : str 
     password : str
+    id: Optional[int] = field(default=None)
+    
