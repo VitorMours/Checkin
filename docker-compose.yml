@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  django_app:
+    build: .
+    container_name: django_app
+    ports:
+      - "8001:8000" # Porta do host alterada para 8001
+    volumes:
+      - .:/app
+    environment:
+      - DJANGO_SETTINGS_MODULE=meuprojeto.settings
+      # Variáveis de ambiente para a conexão com o PostgreSQL
+      - POSTGRES_DB=meudb
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_HOST=db # O nome do serviço do banco de dados no docker-compose
+      - POSTGRES_PORT=5432
+    depends_on:
+      - db # Django agora depende do serviço de banco de dados
+
+  db:
+    image: postgres:13 # Versão do PostgreSQL
+    container_name: postgres_db
+    environment:
+      - POSTGRES_DB=meudb        # Nome do banco de dados
+      - POSTGRES_USER=user      # Usuário do banco de dados
+      - POSTGRES_PASSWORD=password # Senha do banco de dados
+    volumes:
+      - postgres_data:/var/lib/postgresql/data # Volume para persistir os dados do PostgreSQL
+    ports:
+      - "5432:5432" # Mapeia a porta do PostgreSQL do host (5433) para o contêiner (5432)
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin_app
+    ports:
+      - "5050:80" # Acessível em http://localhost:5050
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@example.com # Seu email para login no pgAdmin
+      - PGADMIN_DEFAULT_PASSWORD=admin # Sua senha para login no pgAdmin
+    depends_on:
+      - db # pgAdmin depende do serviço de banco de dados
+
+volumes:
+  postgres_data: # Novo volume nomeado para persistir os dados do PostgreSQL

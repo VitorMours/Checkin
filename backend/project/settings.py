@@ -4,6 +4,7 @@ Django settings for project project.
 Gerado por 'django-admin startproject' usando Django 5.2.5.
 """
 
+import os
 from pathlib import Path
 from datetime import timedelta
 
@@ -23,10 +24,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    # Terceiros
     "rest_framework",
-    "corsheaders",  # habilitar CORS
-    # App local
+    "corsheaders",
     "api",
 ]
 
@@ -63,9 +62,13 @@ ASGI_APPLICATION = "project.asgi.application"
 
 # Banco de dados (SQLite por padrão)
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('POSTGRES_DB', 'meudb'),        # Nome do banco de dados
+        'USER': os.environ.get('POSTGRES_USER', 'user'),      # Usuário do banco de dados
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD', 'password'), # Senha do banco de dados
+        'HOST': os.environ.get('POSTGRES_HOST', 'db'),        # Nome do serviço do banco de dados no docker-compose
+        'PORT': os.environ.get('POSTGRES_PORT', '5432'),      # Porta padrão do PostgreSQL
     }
 }
 
@@ -100,6 +103,7 @@ AUTH_USER_MODEL = "api.User"
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
         "rest_framework_simplejwt.authentication.JWTAuthentication",
+        
     ),
 }
 

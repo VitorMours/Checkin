@@ -16,7 +16,6 @@ class UserSerializer(serializers.ModelSerializer):
             "is_staff": {"read_only": True},
         }
 
-
     def create(self, validated_data):
         password = validated_data.pop("password", None)
         user = User(**validated_data)
@@ -33,13 +32,10 @@ class UserSerializer(serializers.ModelSerializer):
             instance.set_password(password)
         instance.save()
         return instance
-
-
-
-# class ManagerSerializer(serializers.ModelSerializer):
-    # class Meta:
-        # model = Manager
-        # fields = '__all__'
+    
+    
+    
+    
 
 class CustomJWTSerializer(jwtserializers.TokenObtainPairSerializer):
     username_field = 'email'
@@ -58,3 +54,6 @@ class CustomJWTSerializer(jwtserializers.TokenObtainPairSerializer):
         data["email"] = self.user.email
         data["id"] = str(self.user.id)
         return data
+
+
+
