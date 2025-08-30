@@ -1,6 +1,6 @@
 import json
 from django.test import TestCase
-from api.models import User, Manager
+from api.models import User
 
 
 class UserModelTestCase(TestCase):
