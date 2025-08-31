@@ -1,4 +1,6 @@
 from rest_framework import serializers
+
+from .models import Journey
 from .models import User
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
@@ -32,10 +34,6 @@ class UserSerializer(serializers.ModelSerializer):
             instance.set_password(password)
         instance.save()
         return instance
-    
-    
-    
-    
 
 class CustomJWTSerializer(jwtserializers.TokenObtainPairSerializer):
     username_field = 'email'
@@ -55,5 +53,10 @@ class CustomJWTSerializer(jwtserializers.TokenObtainPairSerializer):
         data["id"] = str(self.user.id)
         return data
 
+
+class JourneySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Journey
+        fields = "__all__"
 
 

@@ -31,12 +31,13 @@ class UserModelTestCase(TestCase):
         self.user_carlos.last_name = "Pietro"
         self.assertEqual(self.user_carlos.last_name, "Pietro")
 
-
     def test_set_object_email_data(self) -> None:
         self.assertEqual(self.user_carlos.email, "carlos.vitor@email.com")
         self.user_carlos.email = "teste.teste@email.com"
         self.assertEqual(self.user_carlos.email, "teste.teste@email.com")
 
+    def test_set_object_first_name_null_or_blank(self) -> None:
+        self.assertEqual(self.user_carlos.first_name, "Carlos")
 
 
 
