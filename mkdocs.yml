@@ -1,0 +1,13 @@
+site_name: Checkin API
+
+nav:
+  - Home: index.md
+  - Authentication: auth.md
+  - Navigation: pages.md
+  - Manual:
+    - Usuario: entities/user.md
+    - Gerente: entities/manager.md
+    - Administrador: entities/admin.md
+
+theme:
+  name: material
