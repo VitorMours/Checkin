@@ -1,0 +1,25 @@
+classDiagram
+    User <|-- Manager
+    class User{
+        +first_name: str
+        +last_name: str
+        +email: email
+        +pasword: str
+        +is_active: bool
+        +is_staff: bool
+        +data_created:datetime
+        -data_updated:datetime
+        %% Metodos da Entidade
+        +get_full_name() str
+        +get_short_name() str 
+    }
+
+    class Manager{
+        +section: Section
+    }
+    class Section{
+        +name: str
+        +description: str
+        +data_created:datetime
+        -data_updated:datetime
+    }

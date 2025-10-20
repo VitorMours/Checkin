@@ -14,6 +14,7 @@ from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+AUTH_USER_MODEL = 'api.CustomUser'  # Replace 'api' with your app name
 
 
 # Quick-start development settings - unsuitable for production
@@ -21,6 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-m)z==@*0dci#ha&$$ja412!=_ux&7qibu%!4ffba0daqiz&kw4'
+AUTH_USER_MODEL="api.CustomUser"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,7 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'api'
+    'rest_framework',
+    'corsheaders',
+    'rest_framework_simplejwt',
+    'api',
 ]
 
 MIDDLEWARE = [
