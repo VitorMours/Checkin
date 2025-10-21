@@ -55,8 +55,30 @@ class TestCustomUserManager(TestCase):
         class_ = self.module.CustomUserManager
         self.assertTrue(hasattr(class_, "create_superuser"))
         
-    def test_if_custom_user_manager_create_user_function_return_user(self) -> None: 
-        pass
-
+    def test_if_custom_user_manager_create_user_function_return_user(self) -> None:
+        user = self.module.CustomUser.objects.create_user(
+            email="jvrezendemoura@gmail.com", 
+            password="32322916aA!", 
+            first_name="Vitor"
+        )
+        self.assertIsInstance(user, self.module.CustomUser)
+        self.assertEqual(user.email, "jvrezendemoura@gmail.com")
+        self.assertEqual(user.first_name, "Vitor")
+        self.assertTrue(user.is_active)
+        self.assertFalse(user.is_staff)
+    
+    def test_if_custom_user_manager_create_superuser_function_return_superuser(self) -> None:
+        user = self.module.CustomUser.objects.create_superuser(
+            email="malu.reis@gmail.com", 
+            password="32322916aA!", 
+            first_name="Malu",
+        )
+        self.assertIsInstance(user, self.module.CustomUser)
+        self.assertEqual(user.email, "malu.reis@gmail.com")
+        self.assertEqual(user.first_name, "Malu")
+        self.assertTrue(user.is_active)
+        self.assertTrue(user.is_staff)
         
+ 
+    
     

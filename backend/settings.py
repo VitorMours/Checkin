@@ -14,7 +14,6 @@ from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-AUTH_USER_MODEL = 'api.CustomUser'  # Replace 'api' with your app name
 
 
 # Quick-start development settings - unsuitable for production
@@ -43,6 +42,11 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework_simplejwt',
     'api',
+]
+
+AUTHENTICATION_BACKENDS = [
+    'myapp.backends.EmailBackend',
+    'django.contrib.auth.backends.ModelBackend', # Keep default if needed
 ]
 
 MIDDLEWARE = [
