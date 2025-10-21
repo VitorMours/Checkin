@@ -8,8 +8,8 @@ class TestUrls(TestCase):
         self.module = importlib.import_module("api.urls")
         self.urls = [
             'auth/login',
-            'auth/token/refresh/',
-            'auth/token/verify/',
+            'auth/token/refresh',
+            'auth/token/verify',
         ]        
     
     def test_if_is_running(self) -> None:
