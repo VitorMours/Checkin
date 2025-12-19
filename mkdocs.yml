@@ -3,6 +3,9 @@ site_name: Checkin API
 nav:
   - Home: index.md
   - Authentication: auth.md
+  - Architecture: 
+    - Backend: architecture/backend.md
+    - Mobile: architecture/mobile.md
   - Navigation: pages.md
   - Manual:
     - Usuario: entities/user.md
